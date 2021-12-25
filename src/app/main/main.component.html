@@ -1,0 +1,63 @@
+<div class="table-responsive">
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th 
+                    class="text-center col-2"
+                    sortable="id"
+                    scope="col"
+                    [appSort]="listadoPersonas" 
+                    data-order="desc" 
+                    data-name="id"
+                >
+                    ID  
+                    <i [class]="iconClass"></i>
+                </th>
+                
+                <th 
+                    class="text-center col-2" 
+                    scope="col"
+                    [appSort]="listadoPersonas" 
+                    data-order="desc" 
+                    data-name="first_name"
+                >
+                    Nombre  
+                    <i class="fa fa-sort"></i>
+                </th>
+                
+                <th 
+                    class="text-center col-2" 
+                    scope="col"
+                    [appSort]="listadoPersonas" 
+                    data-order="desc" 
+                    data-name="last_name"
+                >
+                    Apellido  
+                    <i class="fa fa-sort"></i>
+                </th>
+                
+                <th 
+                    class="text-center col-2" 
+                    scope="col"
+                    [appSort]="listadoPersonas" 
+                    data-order="desc" 
+                    data-name="email"
+                >
+                    Email  
+                    <i class="fa fa-sort"></i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let persona of listadoPersonas | slice: (page-1) * cantidadRegistros : (page-1) * cantidadRegistros + cantidadRegistros">
+                <td class="text-center">{{ persona.id }}</td>
+                <td class="text-center">{{ persona.first_name}}</td>
+                <td class="text-center">{{ persona.last_name }}</td>
+                <td class="text-center">{{ persona.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <ngb-pagination [pageSize]="cantidadRegistros" [collectionSize]="coleccionPersonas" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+</div>
